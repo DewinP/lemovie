@@ -22,9 +22,7 @@ import { useMovieQuery } from "../../api/services/movieApi";
 const Movie: NextPage = () => {
   let router = useRouter();
   let movieId = router.query.id as string;
-  const loading = true;
   const { isLoading, isError, data } = useMovieQuery(movieId);
-  console.log(data);
 
   if (isLoading) {
     <Layout>
@@ -42,9 +40,8 @@ const Movie: NextPage = () => {
         <Heading alignSelf="center">{data?.title}</Heading>
         <Image
           alignSelf="center"
-          maxW="500px"
           maxH="400px"
-          src="https://image.tmdb.org/t/p/original/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg"
+          src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
         />
         <Stack
           justify="center"
@@ -95,7 +92,7 @@ const Movie: NextPage = () => {
             <Tr>
               <Td>{data?.release_date}</Td>
               <Td>{data?.runtime} Min</Td>
-              <Td>${data?.revenue}</Td>
+              <Td>${data?.revenue.toLocaleString()}</Td>
               <Td isNumeric>{data?.vote_average}/10</Td>
             </Tr>
           </Tbody>
