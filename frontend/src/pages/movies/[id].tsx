@@ -22,17 +22,21 @@ import { useMovieQuery } from "../../api/services/movieApi";
 const Movie: NextPage = () => {
   let router = useRouter();
   let movieId = router.query.id as string;
-  const { isLoading, isError, data } = useMovieQuery(movieId);
-
+  const { isLoading, error, data } = useMovieQuery(movieId);
+  console.log(error);
   if (isLoading) {
-    <Layout>
-      <Heading>LOADING........</Heading>
-    </Layout>;
+    return (
+      <Layout>
+        <Heading>LOADING........</Heading>
+      </Layout>
+    );
   }
-  if (isError) {
-    <Layout>
-      <Heading>ERROR</Heading>
-    </Layout>;
+  if (error) {
+    return (
+      <Layout>
+        <Heading>ERROR</Heading>
+      </Layout>
+    );
   }
   return (
     <Layout>
@@ -45,7 +49,7 @@ const Movie: NextPage = () => {
         />
         <Stack
           justify="center"
-          bg="ghostwhite"
+          bg="gray.50"
           borderRadius="10px"
           minW="300px"
           alignSelf="center"
