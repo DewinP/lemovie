@@ -13,4 +13,4 @@ Will be adding more features that will live in the landing page
 
 ## Voting Feautures
 
-![Voting](https://media.giphy.com/media/Ecj25RuSHl3bMBOsCR/giphy.gif)
+![Voting](https://media.giphy.com/media/fvvWQnouSdehBCDoLw/giphy.gif)
