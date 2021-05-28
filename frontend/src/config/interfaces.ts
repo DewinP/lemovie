@@ -1,13 +1,14 @@
 export interface IMovie {
-  id: string;
+  id: number;
   title: string;
   runtime: number;
   vote_average: number;
   overview: string;
   revenue: number;
   release_date: string;
-  genres: string[];
+  genres: IGenre[];
   poster_path: string;
+  tagline: string;
 }
 
 export enum GenreOption {
@@ -30,4 +31,22 @@ export enum GenreOption {
   thriller = 53,
   war = 53,
   western = 37,
+}
+
+export interface IMovieSearchResponse {
+  page: number;
+  results: IMovie[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface IGenre {
+  id: number;
+  name: string;
+}
+
+export interface IVote {
+  movieId: string;
+  upvotes: number;
+  downvotes: number;
 }

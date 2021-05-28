@@ -1,29 +1,46 @@
 import { Request, Response } from "express";
-import { title } from "process";
 import { getRepository } from "typeorm";
 import { Movie } from "../models/Movie";
 
 export class MovieController {
   public static AddMovie = async (req: Request, res: Response) => {
     let movie = await getRepository(Movie).save({
-      title: req.body.title,
-      like: req.body.like ? 1 : 0,
-      dislike: req.body.like ? 0 : 1,
+      movieId: req.params.movieId,
     });
     res.status(201).json(movie);
   };
-  public static likeMovie = async (req: Request, res: Response) => {
-    let movie = await getRepository(Movie).save({
-      title: title,
-      like: req.body.likes,
+  public static upvoteMovie = async (req: Request, res: Response) => {
+    let movie = await getRepository(Movie).findOne({
+      where: { movieId: req.body.movieId },
     });
-    res.json(movie);
+    if (movie) {
+      movie.upvotes++;
+      await getRepository(Movie).save(movie);
+      res.json(movie);
+    } else {
+      res.sendStatus(500);
+    }
   };
-  public static dislikeMovie = async (req: Request, res: Response) => {
-    let movie = await getRepository(Movie).save({
-      title: title,
-      like: req.body.dislikes,
+  public static getMovie = async (req: Request, res: Response) => {
+    let movie = await getRepository(Movie).findOne({
+      where: { movieId: req.params.movieId },
     });
-    res.json(movie);
+    if (movie) {
+      res.json(movie);
+    } else {
+      res.sendStatus(404);
+    }
+  };
+  public static downvoteMovie = async (req: Request, res: Response) => {
+    let movie = await getRepository(Movie).findOne({
+      where: { movieId: req.body.movieId },
+    });
+    if (movie) {
+      movie.downvotes++;
+      await getRepository(Movie).save(movie);
+      res.json(movie);
+    } else {
+      res.sendStatus(500);
+    }
   };
 }

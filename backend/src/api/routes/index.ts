@@ -2,8 +2,9 @@ import { Router } from "express";
 import { MovieController } from "../controller/movie.controller";
 
 const router = Router();
-router.use("/addMovie", MovieController.AddMovie);
-router.use("/likeMovie", MovieController.likeMovie);
-router.use("/dislikeMovie", MovieController.dislikeMovie);
+router.post("/add/:movieId", MovieController.AddMovie);
+router.get("/movie/:movieId", MovieController.getMovie);
+router.patch("/upvote", MovieController.upvoteMovie);
+router.patch("/downvote", MovieController.downvoteMovie);
 
 export default router;

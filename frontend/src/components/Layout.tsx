@@ -8,11 +8,13 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <>
+    <Box>
       <Navbar />
       <Flex maxWidth="900px" justify="center" minH="100vh" marginX="auto">
-        <Box>{children}</Box>
+        <Box w="100%" pt={4} pb={10}>
+          {children}
+        </Box>
       </Flex>
-    </>
+    </Box>
   );
 };

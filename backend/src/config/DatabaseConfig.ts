@@ -1,4 +1,5 @@
 import { ConnectionOptions } from "typeorm";
+import { Movie } from "../api/models/Movie";
 export default {
   type: "postgres",
   database: "movies-yearone",
@@ -6,5 +7,5 @@ export default {
   password: "postgres",
   logging: true,
   synchronize: true,
-  entities: [],
+  entities: [Movie],
 } as ConnectionOptions;

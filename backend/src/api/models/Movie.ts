@@ -6,11 +6,11 @@ export class Movie extends BaseEntity {
   id!: string;
 
   @Column()
-  title!: string;
+  movieId!: string;
 
-  @Column()
-  like: number;
+  @Column({ default: 0 })
+  upvotes: number;
 
-  @Column()
-  dislike: number;
+  @Column({ default: 0 })
+  downvotes: number;
 }

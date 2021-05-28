@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_KEY } from "../../config/constants";
-import { GenreOption, IMovie } from "../../config/interfaces";
+import {
+  GenreOption,
+  IMovie,
+  IMovieSearchResponse,
+} from "../../config/interfaces";
 
 export const movieApi = createApi({
   reducerPath: "movieApiPath",
@@ -14,12 +18,15 @@ export const movieApi = createApi({
         query: (movieId) => `movie/${movieId}?api_key=${API_KEY}`,
         providesTags: (result) => [{ type: "Movies", id: result?.id }],
       }),
-      searchMovie: build.query<IMovie[], { name: string; page?: string }>({
+      searchMovie: build.query<
+        IMovieSearchResponse,
+        { name: string; page?: string }
+      >({
         query: ({ name, page = "1" }) =>
-          `search/movie?api_key=${API_KEY}&query=${name}&page=${page}&include_adult=false`,
-        providesTags: (result) =>
-          result
-            ? result.map((m) => ({ type: "Movies", id: m.id }))
+          `search/movie?api_key=${API_KEY}&query=${name}&page=${page}&include_adult=false&language=en-US`,
+        providesTags: (res) =>
+          res
+            ? res.results.map((m) => ({ type: "Movies", id: m.id }))
             : ["Movies"],
       }),
       movieByGenre: build.query<
