@@ -14,12 +14,6 @@ This project was created with Typescript, Node.js, React, Next.js, Typeorm and P
   - RUN 'createdb movie-yearone' in the terminal
   - RUN 'yarn start', the terminal should automatically log 'running in port [http://localhost:4000](http://localhost:4000)' when started.
 
-### Landing Page
-
-Will be adding more features that will live in the landing page
-
-![landing page](https://i.imgur.com/taDAfNU.png)
-
 ### Search and Pagination Functionality
 
 ![Search Bar](https://media.giphy.com/media/Ecj25RuSHl3bMBOsCR/giphy.gif)
@@ -27,3 +21,7 @@ Will be adding more features that will live in the landing page
 ### Voting Feautures
 
 ![Voting](https://media.giphy.com/media/fvvWQnouSdehBCDoLw/giphy.gif)
+
+### Genre Sorting - comming soon ...
+
+### Genre Sorting - comming soon ...
