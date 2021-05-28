@@ -2,7 +2,7 @@
 
 Search and rank movies.
 
-This project was created with Typescript, Node.js, React, Next.js, Typeorm and PostgreSQL
+This project was created with Typescript, Node.js, React, Next.js, Typeorm and PostgreSQL & [The Movie DB API](https://www.themoviedb.org/documentation/api)
 
 ## How to set up and run:
 
