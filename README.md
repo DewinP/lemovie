@@ -22,6 +22,8 @@ This project was created with Typescript, Node.js, React, Next.js, Typeorm and P
 
 ![Voting](https://media.giphy.com/media/fvvWQnouSdehBCDoLw/giphy.gif)
 
-### Genre Sorting - comming soon ...
+## Features coming soon
 
-### Genre Sorting - comming soon ...
+### Genre Sorting
+
+### Saved Movie Lists
