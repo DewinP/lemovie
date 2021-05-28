@@ -7,7 +7,7 @@ export class MovieController {
     let movie = await getRepository(Movie).save({
       movieId: req.params.movieId,
     });
-    res.status(201).json(movie);
+    res.json(movie);
   };
   public static upvoteMovie = async (req: Request, res: Response) => {
     let movie = await getRepository(Movie).findOne({
@@ -28,7 +28,8 @@ export class MovieController {
     if (movie) {
       res.json(movie);
     } else {
-      res.sendStatus(404);
+      res.json(null);
+      //res.sendStatus(200)
     }
   };
   public static downvoteMovie = async (req: Request, res: Response) => {
@@ -40,7 +41,7 @@ export class MovieController {
       await getRepository(Movie).save(movie);
       res.json(movie);
     } else {
-      res.sendStatus(500);
+      res.sendStatus(401);
     }
   };
 }

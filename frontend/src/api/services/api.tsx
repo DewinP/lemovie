@@ -11,7 +11,14 @@ export const api = createApi({
     return {
       getVotes: build.query<IVote, string>({
         query: (movieId) => `movie/${movieId}`,
-        providesTags: (result, error, args) => [{ type: "Vote", id: args }], //Result could be unfe
+        providesTags: (result, error, args) => {
+          console.log(
+            "=============++++++=============",
+            result?.movieId,
+            args
+          );
+          return [{ type: "Vote", id: args }];
+        },
       }),
       createVotes: build.mutation<IVote, string>({
         query: (movieId) => ({
@@ -19,7 +26,7 @@ export const api = createApi({
           method: "POST",
           body: { movieId },
         }),
-        invalidatesTags: (result) => [{ type: "Vote", id: result?.movieId }],
+        invalidatesTags: (result) => [{ type: "Vote", id: result!.movieId }],
       }),
       upvoteVotes: build.mutation<IVote, string>({
         query: (movieId) => ({
@@ -27,7 +34,7 @@ export const api = createApi({
           method: "PATCH",
           body: { movieId },
         }),
-        invalidatesTags: (result) => [{ type: "Vote", id: result?.movieId }],
+        invalidatesTags: (result) => [{ type: "Vote", id: result!.movieId }],
       }),
       downvoteVotes: build.mutation<IVote, string>({
         query: (movieId) => ({

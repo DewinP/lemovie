@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   Image,
+  Spinner,
   Tag,
   Text,
 } from "@chakra-ui/react";
@@ -28,10 +29,9 @@ const Movie: NextPage = () => {
   let router = useRouter();
   let movieId = router.query.id as string;
   const { isLoading, error, data } = useMovieQuery(movieId);
-  const { data: votes, isLoading: votesIsLoading } = useGetVotesQuery(movieId);
+  const voteRes = useGetVotesQuery(movieId);
   const [createVote, { isLoading: createIsLoading }] = useCreateVotesMutation();
-
-  if (isLoading || votesIsLoading) {
+  if (isLoading) {
     return (
       <Layout>
         <Heading>LOADING........</Heading>
@@ -127,8 +127,9 @@ const Movie: NextPage = () => {
           </HStack>
           <Stack>
             <Stack w="100%" h="100px" bg="#393e46" justify="center">
-              {votes && <MovieRanker votes={votes} />}
-              {!votes && (
+              {!voteRes.isLoading && voteRes.data ? (
+                <MovieRanker votes={voteRes.data} />
+              ) : (
                 <HStack justify="center">
                   <Button
                     colorScheme="orange"
@@ -138,6 +139,15 @@ const Movie: NextPage = () => {
                     ADD TO LeMovies RANKING
                   </Button>
                 </HStack>
+              )}
+              {voteRes.isLoading && (
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="blue.500"
+                  size="xl"
+                />
               )}
             </Stack>
             <Divider />
