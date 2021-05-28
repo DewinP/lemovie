@@ -136,7 +136,7 @@ const Movie: NextPage = () => {
                     onClick={() => createVote(movieId)}
                     isLoading={createIsLoading}
                   >
-                    ADD TO LeMovies RANKING
+                    ADD LeMovies RANKING
                   </Button>
                 </HStack>
               )}

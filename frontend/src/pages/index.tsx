@@ -4,7 +4,10 @@ import React from "react";
 const Index = () => (
   <Layout>
     <Stack p={4} w="1000px" maxW="1000px">
-      <Heading> Ill prob add sort by genre here</Heading>
+      <Heading size="lg">
+        Saving HomePage for a Discovery, sort by Genres and More Page. coming
+        soon...
+      </Heading>
     </Stack>
   </Layout>
 );
