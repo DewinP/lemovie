@@ -25,5 +25,5 @@ This project was created with Typescript, Node.js, React, Next.js, Typeorm and P
 ## Features coming soon
 
 ### Genre Sorting
-
-### Saved Movie Lists
+### Authentication
+#### Saved Movie Lists
